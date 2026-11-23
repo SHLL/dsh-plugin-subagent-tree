@@ -4,6 +4,11 @@
     - id: subagent-tree
       name: dsh-plugin-subagent-tree
       config:
+        # 子 agent 台账文件位置。空＝$DSH_HOME/subagent-admin.json（没设 DSH_HOME 就是 ~/.dsh/...）；
+        # 工位台账会跟着放在同一个目录。可以指到任意位置，比如 D:/dsh-data/subagent-admin.json。
+        ledgerPath: ''
+        # 会话根目录。空＝$DSH_HOME/sessions。换了数据目录就在这里指过去。
+        sessionRoot: ''
         # 子 agent 再派子 agent 的最大层数（1-10）。
         maxDepth: 3
         # spawn_agent 默认等多久（毫秒）。

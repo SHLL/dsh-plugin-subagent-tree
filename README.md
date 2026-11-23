@@ -52,6 +52,8 @@ Set it in the profile's `cordis.patch.yml`; reload the plugin to apply:
     - id: subagent-tree
       name: dsh-plugin-subagent-tree
       config:
+        ledgerPath: ''          # ledger file; default $DSH_HOME/subagent-admin.json
+        sessionRoot: ''         # sessions directory; default $DSH_HOME/sessions
         maxDepth: 3
         defaultTimeoutMs: 600000
         maxWaitMs: 1800000
@@ -62,6 +64,8 @@ Set it in the profile's `cordis.patch.yml`; reload the plugin to apply:
 ```
 
 Invalid values never throw: wrong types fall back to defaults and numbers are clamped.
+
+Every path is derived, never hard-coded: defaults follow `DSH_HOME` (or `~/.dsh`), and `ledgerPath` / `sessionRoot` move the data anywhere you like. Relative values resolve against the process working directory, so the same package works from any profile or drive.
 
 ## Limits and known trade-offs
 
@@ -84,6 +88,7 @@ lib/guard.mjs       Route guard
 lib/manage.mjs      Spawn, stop, rename, hide, restore
 lib/registry.mjs    Subagent ledger
 lib/seats.mjs       Seat ledger
+lib/paths.mjs       Ledger and session-root resolution ($DSH_HOME plus config)
 lib/scan.mjs        Session-header scan and tree build
 lib/shape.mjs       Tree presentation shape
 docs/               Plugin detail document and preview image

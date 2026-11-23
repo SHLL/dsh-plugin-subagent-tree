@@ -53,6 +53,8 @@ plugin_manager install_bundle target=/path/to/subagent-tree
     - id: subagent-tree
       name: dsh-plugin-subagent-tree
       config:
+        ledgerPath: ''              # 台账文件；空＝$DSH_HOME/subagent-admin.json
+        sessionRoot: ''             # 会话目录；空＝$DSH_HOME/sessions
         maxDepth: 3                 # 子 agent 再派子 agent 的层数上限
         defaultTimeoutMs: 600000    # spawn_agent 默认等待
         maxWaitMs: 1800000          # spawn_agent 最长等待
@@ -63,6 +65,8 @@ plugin_manager install_bundle target=/path/to/subagent-tree
 ```
 
 坏值不会抛错：类型不对回默认，数值越界夹到范围内。
+
+**路径都是算出来的，没有写死任何机器上的绝对路径**：默认跟 `DSH_HOME`（没设就是 `~/.dsh`）走，换目录就配 `ledgerPath` / `sessionRoot`，相对路径按进程工作目录解析。装到哪个 profile、哪个盘都一样能用。
 
 ## 边界与已知取舍
 

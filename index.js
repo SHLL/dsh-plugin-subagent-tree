@@ -12,6 +12,7 @@ import { renderText, shape, stateOf } from './lib/shape.mjs';
 import { bindSeat, listSeats, removeSeat, renameSeat, retireSeat, reviveSeat } from './lib/seats.mjs';
 import { getChild, patchChild } from './lib/registry.mjs';
 import { normalizeConfig } from './lib/config.mjs';
+import { configurePaths } from './lib/paths.mjs';
 import { checkJsonRequest, checkPanelRequest } from './lib/guard.mjs';
 import {
   hideChild,
@@ -250,6 +251,8 @@ async function handleAction(ctx, body) {
 
 export function apply(ctx, rawConfig) {
   const config = normalizeConfig(rawConfig);
+  // 台账与会话目录：默认 $DSH_HOME，配置里可以改到任意位置
+  configurePaths(config);
   const origin = (() => {
     try {
       return ctx.webServer.getOrigin();
@@ -278,7 +281,7 @@ export function apply(ctx, rawConfig) {
           description: 'text renders an indented tree; json returns the structured payload the panel uses',
         },
         session: { type: 'string', description: 'Session id to inspect; defaults to the calling Session' },
-        root: { type: 'string', description: 'Session storage root; defaults to ~/.dsh/sessions' },
+        root: { type: 'string', description: 'Session storage root; defaults to $DSH_HOME/sessions' },
       },
       additionalProperties: false,
     },
