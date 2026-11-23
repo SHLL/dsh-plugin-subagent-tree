@@ -16,6 +16,7 @@ import { configurePaths } from './lib/paths.mjs';
 import { checkJsonRequest, checkPanelRequest } from './lib/guard.mjs';
 import {
   hideChild,
+  isManaged,
   lastAssistantText,
   listManaged,
   renameChild,
@@ -215,6 +216,7 @@ async function handleAction(ctx, body) {
       notify: config.notifyOnComplete,
       start: body.start !== false,
       maxDepth: config.maxDepth,
+      maxChildren: config.maxChildren,
     });
     return { ok: true, ...spawned };
   }
@@ -242,6 +244,8 @@ async function handleAction(ctx, body) {
     const seat = removeSeat({ seat: id });
     return { ok: true, seat };
   }
+  // 只有台账里记着的子 agent 才归本插件管；别的会话 id 一律拒绝
+  if (!isManaged(id)) return { ok: false, error: '这条不在插件台账里，不归本插件管' };
   if (action === 'stop') return stopChild(ctx, id);
   if (action === 'rename') return renameChild(ctx, id, String(body.title || ''));
   if (action === 'hide') return hideChild(ctx, id);
@@ -481,6 +485,7 @@ export function apply(ctx, rawConfig) {
           return renderManaged(rows).join('\n');
         }
         if (!a.id) return '要带 id（子 agent 的会话 id）。';
+        if (!isManaged(a.id)) return '这条不在插件台账里，不归本插件管。';
         if (a.action === 'stop') {
           const r = stopChild(ctx, a.id);
           return r.ok ? `已让它停：${a.id.slice(0, 10)}` : `没停：${r.reason}`;

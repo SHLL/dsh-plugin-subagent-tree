@@ -58,6 +58,7 @@ plugin_manager install_bundle target=/path/to/subagent-tree
         maxDepth: 3                 # 子 agent 再派子 agent 的层数上限
         defaultTimeoutMs: 600000    # spawn_agent 默认等待
         maxWaitMs: 1800000          # spawn_agent 最长等待
+        maxChildren: 16             # 同时在用的子 agent 上限
         notifyOnComplete: true      # 跑完是否回执
         renderStatuses: [running, idle, done]   # 页面渲染哪些状态
         allowPreview: true          # 允许「查看」读子会话正文
@@ -74,6 +75,9 @@ plugin_manager install_bundle target=/path/to/subagent-tree
 - **软删**：`hide` = 台账隐藏 + `workspaceRegistry.archiveSession` 归档，会话文件不动，随时 `restore`。
 - 分离型子 agent 建成后不挂工作区（不在侧栏出现），只在面板里管。
 - **HTTP 口只给本机页面用**：要求回环 Host、同源 Origin、`x-subagent-admin: 1` 头，挡的是跨站页面；同机其它进程不在防护范围内（假定本机可信）。
+- **只认台账里的 id**：停、改名、隐藏、恢复都先查台账，别的会话 id 一律拒绝——手里的口子不能拿来动别人的会话。
+- **台账键白名单**：id 只允许字母数字和 `._:-`，`__proto__` / `constructor` / `prototype` 直接丢，读到脏键不污染原型。
+- **在用量有上限**（`maxChildren`，默认 16），防止被页面或脚本拿来刷子 agent。
 - **横栏是 `document.body` 上的浮层**：标签栏下面没有任何全宽槽位，header 槽位又有 overflow 裁剪，所以这一条是唯一挂到 body 的元素，随组件卸载移除。其余 UI 全部走槽位。
 - 原生那套子 agent（`subagent` 工具创建的）在窗口目录里仍然删不掉——那是框架的只增投影，本插件只提供只读树 + 「停」。
 - 停用插件会撤掉页面、工具和路由；已派出去的子会话和台账留在磁盘上，还在跑的子 agent 不会被杀。

@@ -41,4 +41,10 @@ assert.equal(normalizeConfig({ allowOpen: 0 }).allowOpen, DEFAULTS.allowOpen);
 assert.equal(normalizeConfig({ allowOpen: false }).allowOpen, false);
 assert.equal(normalizeConfig({ notifyOnComplete: false }).notifyOnComplete, false);
 
+// 在用子 agent 上限：1-100 有效
+assert.equal(normalizeConfig({ maxChildren: 5 }).maxChildren, 5);
+assert.equal(normalizeConfig({ maxChildren: 0 }).maxChildren, DEFAULTS.maxChildren);
+assert.equal(normalizeConfig({ maxChildren: 101 }).maxChildren, DEFAULTS.maxChildren);
+assert.equal(normalizeConfig({ maxChildren: '8' }).maxChildren, DEFAULTS.maxChildren);
+
 console.log('config 自测通过');

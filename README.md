@@ -57,6 +57,7 @@ Set it in the profile's `cordis.patch.yml`; reload the plugin to apply:
         maxDepth: 3
         defaultTimeoutMs: 600000
         maxWaitMs: 1800000
+        maxChildren: 16
         notifyOnComplete: true
         renderStatuses: [running, idle, done]
         allowPreview: true
@@ -73,6 +74,9 @@ Every path is derived, never hard-coded: defaults follow `DSH_HOME` (or `~/.dsh`
 - **Soft delete**: `hide` marks the ledger and archives the Session via `workspaceRegistry`; files stay and `restore` brings it back.
 - Detached subagents are not attached to a workspace (they do not appear in the sidebar); the panel manages them.
 - **The HTTP routes serve the local page only**: loopback Host, same-origin `Origin`, and an `x-subagent-admin: 1` header. That blocks cross-site pages; another local process is assumed trusted.
+- **Only ledger-owned ids are actionable**: stop, rename, hide and restore all check the ledger first, so the endpoints cannot touch a Session they do not own.
+- **Ledger keys are allow-listed**: ids accept letters, digits and `._:-` only; `__proto__`, `constructor` and `prototype` are dropped, so a hand-edited or tampered ledger cannot pollute prototypes.
+- **Concurrency is capped** by `maxChildren` (16 by default) so a page or script cannot spawn unbounded children.
 - **The status bar is the one element mounted on `document.body`**: no full-width slot exists below the tab row and the header slot clips overlays, so this bar is portaled there and removed with the component. Every other control is a slot registration.
 - Native subagents still cannot be removed from a window's catalog — that projection is append-only by design; the plugin offers a read-only tree and "stop" only.
 - Disabling the plugin removes the tab, tools and routes; existing child Sessions and the ledger stay on disk and running children are not killed.

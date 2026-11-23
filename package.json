@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-subagent-tree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Detached subagents, a read-only Session tree, and a seat ledger inside one Session tab.",
   "license": "MIT",
   "private": false,

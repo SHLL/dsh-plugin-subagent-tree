@@ -15,6 +15,8 @@
         defaultTimeoutMs: 600000
         # spawn_agent 最长等多久（毫秒）。
         maxWaitMs: 1800000
+        # 同时在用的分离型子 agent 上限（1-100），防止被拿来刷量。
+        maxChildren: 16
         # 子 agent 跑完后，默认要不要把最后答复回执给派它的会话。
         notifyOnComplete: true
         # 页面上渲染哪些状态的行；不在表里的不显示。
