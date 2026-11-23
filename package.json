@@ -13,6 +13,14 @@
     "agent",
     "session"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SHLL/dsh-plugin-subagent-tree.git"
+  },
+  "homepage": "https://github.com/SHLL/dsh-plugin-subagent-tree#readme",
+  "bugs": {
+    "url": "https://github.com/SHLL/dsh-plugin-subagent-tree/issues"
+  },
   "engines": {
     "dsh": ">=0.2.2-rc.3"
   },
