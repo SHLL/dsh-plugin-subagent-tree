@@ -1,0 +1,49 @@
+{
+  "name": "dsh-plugin-subagent-tree",
+  "version": "1.0.0",
+  "description": "Detached subagents, a read-only Session tree, and a seat ledger inside one Session tab.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "author": "dsh-plugin-subagent-tree contributors",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "subagent",
+    "agent",
+    "session"
+  ],
+  "engines": {
+    "dsh": ">=0.2.2-rc.3"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

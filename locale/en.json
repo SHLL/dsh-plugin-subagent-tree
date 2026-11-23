@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Subagent tree",
+    "description": "Adds a subagent tree tab to every Session. From it you can start detached subagents — separate Sessions that never enter the window's subagent catalog, so deleting or renaming them cannot damage that window — watch the native Session tree read-only, and keep a seat ledger. Start work from the panel box or the spawn_agent tool; open, stop, rename, hide (soft delete plus archive) and restore from each row or its right-click menu. A status bar under the tabs appears only on a detached subagent's page and returns to the parent Session. Subagents run ordinary model turns and report their final answer back to the owning Session; the plugin only reads and writes its own ledger at ~/.dsh/subagent-admin.json and never rewrites DSH Session logs. Disabling the plugin removes the tab, tools and HTTP routes but leaves those Sessions and the ledger on disk.",
+    "detail": "docs/DETAIL.md"
+  }
+}

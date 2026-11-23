@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Arbre des sous-agents",
+    "description": "Ajoute un onglet subagent tree à chaque session. Vous pouvez y lancer des sous-agents détachés — des sessions autonomes qui n'entrent jamais dans le catalogue de sous-agents de la fenêtre, donc les supprimer ou les renommer n'abîme pas cette fenêtre —, consulter en lecture seule l'arbre natif des sessions et tenir un registre de places. Lancez le travail depuis le champ du panneau ou l'outil spawn_agent ; ouvrez, arrêtez, renommez, masquez (suppression douce et archivage) et restaurez depuis chaque ligne ou son menu contextuel. Une barre sous les onglets n'apparaît que sur la page d'un sous-agent détaché et ramène à la session principale. Les sous-agents exécutent des tours de modèle ordinaires et renvoient leur réponse finale à la session propriétaire ; le plugin ne lit et n'écrit que son propre registre ~/.dsh/subagent-admin.json et ne réécrit jamais les journaux de session de DSH. Le désactiver retire l'onglet, les outils et les routes HTTP, mais laisse ces sessions et le registre sur le disque."
+  }
+}

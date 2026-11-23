@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Subagenten-Baum",
+    "description": "Fügt jeder Sitzung einen subagent tree-Tab hinzu. Dort startest du abgetrennte Subagenten — eigenständige Sitzungen, die nie im Subagenten-Katalog des Fensters landen, sodass Löschen oder Umbenennen dieses Fenster nicht beschädigt —, siehst den nativen Sitzungsbaum schreibgeschützt und pflegst ein Platz-Register. Starte Arbeit über das Feld im Panel oder das Werkzeug spawn_agent; öffne, stoppe, benenne um, blende aus (Soft-Delete plus Archivierung) und stelle wieder her — pro Zeile oder über das Kontextmenü. Eine Leiste unter den Tabs erscheint nur auf der Seite eines abgetrennten Subagenten und führt zur übergeordneten Sitzung zurück. Subagenten führen normale Modellrunden aus und melden ihre endgültige Antwort an die besitzende Sitzung zurück; das Plugin liest und schreibt nur sein eigenes Register unter ~/.dsh/subagent-admin.json und schreibt DSH-Sitzungsprotokolle nie um. Deaktivieren entfernt Tab, Werkzeuge und HTTP-Routen, lässt diese Sitzungen und das Register aber auf der Platte."
+  }
+}

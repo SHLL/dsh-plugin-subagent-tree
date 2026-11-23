@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Árvore de subagentes",
+    "description": "Adiciona uma aba subagent tree a cada sessão. Nela você inicia subagentes destacados — sessões independentes que nunca entram no catálogo de subagentes da janela, então excluí-los ou renomeá-los não danifica essa janela —, vê a árvore nativa de sessões somente leitura e mantém um registro de assentos. Inicie trabalho pelo campo do painel ou pela ferramenta spawn_agent; abra, pare, renomeie, oculte (exclusão suave e arquivamento) e restaure em cada linha ou no menu de contexto. Uma barra sob as abas aparece apenas na página de um subagente destacado e volta para a sessão principal. Subagentes executam turnos normais do modelo e devolvem a resposta final à sessão proprietária; o plugin lê e grava apenas o próprio registro em ~/.dsh/subagent-admin.json e nunca reescreve os logs de sessão do DSH. Desativá-lo remove a aba, as ferramentas e as rotas HTTP, mas deixa essas sessões e o registro no disco."
+  }
+}

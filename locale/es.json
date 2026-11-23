@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Árbol de subagentes",
+    "description": "Añade una pestaña subagent tree a cada sesión. Desde ella puedes lanzar subagentes separados —sesiones independientes que nunca entran en el catálogo de subagentes de la ventana, así que borrarlos o renombrarlos no daña esa ventana—, ver el árbol nativo de sesiones en solo lectura y mantener un registro de puestos. Inicia trabajo desde el cuadro del panel o la herramienta spawn_agent; abre, detén, renombra, oculta (borrado lógico y archivo) y restaura desde cada fila o su menú contextual. Una barra bajo las pestañas aparece solo en la página de un subagente separado y vuelve a la sesión principal. Los subagentes ejecutan turnos normales del modelo y devuelven su respuesta final a la sesión propietaria; el plugin solo lee y escribe su propio registro en ~/.dsh/subagent-admin.json y nunca reescribe los registros de sesión de DSH. Desactivarlo quita la pestaña, las herramientas y las rutas HTTP, pero deja esas sesiones y el registro en disco."
+  }
+}

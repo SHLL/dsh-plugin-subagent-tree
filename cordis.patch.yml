@@ -1,0 +1,20 @@
+# 插件行。config 里的值都可以在 profile 的 cordis.patch.yml 里改；
+# 这里写的是默认值，代码还会再收敛一次（类型不对回默认、越界夹到范围内）。
+- insert:
+    - id: subagent-tree
+      name: dsh-plugin-subagent-tree
+      config:
+        # 子 agent 再派子 agent 的最大层数（1-10）。
+        maxDepth: 3
+        # spawn_agent 默认等多久（毫秒）。
+        defaultTimeoutMs: 600000
+        # spawn_agent 最长等多久（毫秒）。
+        maxWaitMs: 1800000
+        # 子 agent 跑完后，默认要不要把最后答复回执给派它的会话。
+        notifyOnComplete: true
+        # 页面上渲染哪些状态的行；不在表里的不显示。
+        renderStatuses: [running, idle, done]
+        # 页面的「查看」是否允许读取子会话正文。
+        allowPreview: true
+        # 页面的「打开」是否允许跳到子会话。
+        allowOpen: true

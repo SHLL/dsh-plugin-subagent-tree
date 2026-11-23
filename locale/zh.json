@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "子 agent 树",
+    "description": "给每个会话加一格 subagent tree。在这页里可以派分离型子 agent（独立会话，不进窗口的子 agent 目录，所以删它改它都不会破坏窗口结构）、只读查看原生子 agent 树、维护常驻工位台账。派活可以用面板输入框或 spawn_agent 工具；每行能打开、停、改名、隐藏（软删加归档）、恢复，右键也有菜单。只有分离型子 agent 的页面会在标签栏下面出现一条横栏，用来返回主会话。子 agent 跑的是普通模型轮次，最后答复会回执给派它的会话；插件只读写自己的台账 ~/.dsh/subagent-admin.json，不改写 DSH 的会话日志。停用插件会撤掉页面、工具和 HTTP 路由，磁盘上的子会话与台账保留。",
+    "detail": "docs/DETAIL.zh.md"
+  }
+}
